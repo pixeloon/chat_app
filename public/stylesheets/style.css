@@ -1,0 +1,49 @@
+
+body{
+  background:lime;
+}
+
+#container{
+  width:800px;
+  margin:0 auto;
+}
+
+#chat{
+  height:300px;
+}
+
+#mainWrapper{
+  display:none;
+}
+
+#chatWrapper{
+  float:left;
+  border:1px gray solid;
+  border-radius: 5px;
+  background:lightgrey;
+  padding:10px;
+}
+
+#userWrapper{
+  float:left;
+  border:1px gray solid;
+  border-radius: 5px;
+  background:yellow;
+  padding:10px;
+  margin-left:20px;
+  width:150px;
+  max-height:200px;
+}
+
+#namesWrapper{
+  float:left;
+  border:1px gray solid;
+  border-radius: 5px;
+  background:green;
+  padding:10px;
+  margin-left:20px;
+}
+
+input{
+  border:solid 1px gray;
+}
