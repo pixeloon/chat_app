@@ -20,11 +20,13 @@ io.on('connection', function(socket) {
     }
 
     socket.on('chat message', function(msg) {
+        console.log("Socket ID: ", socket.id)
         var userAtIndex = users.findIndex(function(el) {
             return el.id === socket.id
         });
+        console.log("INDEX: ", userAtIndex)
         var user = users[userAtIndex].name;
-        data = {msg: msg, user: user}
+        var data = {msg: msg, user: user}
         console.log("DATA: ", data)
         io.emit('chat message', data);
     });

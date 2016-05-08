@@ -1,10 +1,12 @@
 $(function() {
     console.log("Sanity check")
     var socket = io(); // initiate handshake
+    var $window = $(window);
     var $message = $("#message");
     var $chat = $('#chat');
     var $user = $("#user");
     var $users = $('#users');
+    var $currentInput = $user.focus();
 
     $("#userForm").on('submit', e => {
         e.preventDefault();
@@ -13,6 +15,7 @@ $(function() {
         $("#mainWrapper").show();
         socket.emit('user joined', user);
         $user.val("");
+        $currentInput = $message.focus();
     });
 
     socket.on('users', users => {
@@ -31,7 +34,7 @@ $(function() {
     });
 
     socket.on('chat message', data => {
-        $chat.append(data.user + ": " + data.msg + '<br>');
+        $chat.prepend(data.user + ": <div class='triangle-border left'>" + data.msg + '</div>');
 
     });
 

@@ -7,20 +7,21 @@ html
   body
     #container
       #namesWrapper
-        h2 Chat App
+        h2 Chat Room
         p Create Username:
         form#userForm
-          input#user(type='text' autofocus)
-          input(type='submit' value='Submit')
+          input.form-control#user(type='text')
+          input.btn.btn-default(type='submit' value='Submit')
       #mainWrapper
-        h2 Chat App
-        #chatWrapper
-          #chat
-          form#messageForm
-            input#message(type='text', size='35' placeholder='Type message here ...' autofocus)
-            input(type='submit' value='Submit')
+        h2 Chat Room
         #userWrapper
           #users
+        #chatWrapper
+          form#messageForm
+            input.form-control#message(type='text', size='35' placeholder='Type message here ...' autofocus)
+            input.btn.btn-default(type='submit' value='Submit')
+          hr
+          #chat
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js')        
     script(type="text/javascript" src="/socket.io/socket.io.js")
     script(type="text/javascript" src="/javascripts/chat.js")
