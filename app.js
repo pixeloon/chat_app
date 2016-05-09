@@ -19,15 +19,17 @@ io.on('connection', function(socket) {
         io.emit('users', users);
     }
 
+    //identify user
+    function idUser(){
+
+    };
+
     socket.on('chat message', function(msg) {
-        console.log("Socket ID: ", socket.id)
         var userAtIndex = users.findIndex(function(el) {
             return el.id === socket.id
         });
-        console.log("INDEX: ", userAtIndex)
         var user = users[userAtIndex].name;
         var data = {msg: msg, user: user}
-        console.log("DATA: ", data)
         io.emit('chat message', data);
     });
 
@@ -39,6 +41,32 @@ io.on('connection', function(socket) {
         updateUsers();
 
     });
+
+    socket.on('typing', data => {
+        var userAtIndex = users.findIndex(function(el) {
+            return el.id === socket.id
+        });
+        var user = users[userAtIndex].name;
+        users[userAtIndex].typing = true
+
+        var data = {users: users}
+        console.log("DATA (typing): ", data)
+        io.emit('typing', data);
+
+    })
+
+        socket.on('stop typing', data => {
+        var userAtIndex = users.findIndex(function(el) {
+            return el.id === socket.id
+        });
+        var user = users[userAtIndex].name;
+        users[userAtIndex].typing =  false
+
+        var data = {users: users}
+        console.log("DATA (Stop typing): ", data)
+        io.emit('stop typing', data);
+
+    })
 
 });
 
